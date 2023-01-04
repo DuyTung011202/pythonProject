@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import json
 import datetime
+from .form import RegistrationForm
 from .models import *
+from  django.http import HttpResponseRedirect
 def store(request):
 	if request.user.is_authenticated:
 		customer = request.user.customer
@@ -95,3 +97,11 @@ def processOrder(request):
 			print("User is not logged in")
 	return JsonResponse('Payment complete', safe=False)
 
+def register(request):
+	form = RegistrationForm()
+	if request.method == "POST" :
+		form = RegistrationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/')
+	return render(request,'store/register.html',{'form':form})
