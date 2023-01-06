@@ -13,10 +13,48 @@
     {% for key,value in form.errors.items %}
       {{value}}
     {% endfor %}
-    <p><label>Tài khoản:</label>{{form.username}}</p>
-    <p><label>Mật khẩu :</label>{{form.password}}</p>
+    <p><label>Username</label>{{form.username}}</p>
+    <p><label>Password</label>{{form.password}}</p>
     <input type="hidden" name="next" value="/">
-    <input type="submit" value="Đăng nhập"/>
+    <input type="submit" value="Login"/>
+      <p>If you do not have an account, click here: <a href="{% url 'register' %}">Register</a>.</p>
   </form>
+<style>
+    form {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+</style>
 </body>
 </html>
